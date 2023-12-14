@@ -1,4 +1,4 @@
-import helmet from "../../../../public/helmet.svg";
+import helmet from "../../../public/helmet.svg";
 import Image from "next/image";
 
 export default function Helmet() {
@@ -6,8 +6,8 @@ export default function Helmet() {
     <Image
       src={helmet}
       alt="isotipo de la aplicacion"
-      height={30}
-      width={30}
+      height={35}
+      width={35}
     ></Image>
   );
 }
