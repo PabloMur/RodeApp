@@ -14,9 +14,9 @@ export default function Home() {
         <CtaBtn></CtaBtn>
         <div className="h-full w-full absolute top-0 bg-black/50"></div>
       </div>
-      <section className="h-[100vh] w-full flex flex-col justify-center items-center p-10 text-justify">
-        <h2>Que es RodeApp?</h2>
-        <p>
+      <section className="min-h-[100vh] w-full flex flex-col justify-center items-center p-5">
+        <h2 className="text-bold text-2xl">Que es RodeApp?</h2>
+        <p className="text-center">
           En RodeApp, nos apasiona convertir cada viaje en moto en una
           experiencia inolvidable. Somos motoviajeros, exploradores de
           carreteras y amantes de la libertad sobre dos ruedas. Nuestra misión
