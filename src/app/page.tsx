@@ -16,7 +16,7 @@ export default function Home() {
       </div>
       <section className="h-[100vh] w-full bg-red-400">Quienes somos</section>
       <section className="h-[100vh] w-full bg-green-400">Beneficios</section>
-      <section className="h-[100vh] w-full bg-purple-400">
+      <section className="min-h-[100vh] w-full">
         Testimonios
         <TestimonialCard
           name="Juan Hernandez"
