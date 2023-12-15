@@ -1,3 +1,4 @@
+import CtaBtn from "@/components/ui/Buttons/CtaBtn";
 import css from "@/styles/home.module.css";
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <h3 className="z-20 text-center">
         Organiza todo para tu viaje en un solo lugar!
       </h3>
+      <CtaBtn></CtaBtn>
       <div className="h-full w-full absolute top-0 bg-black/50"></div>
     </div>
   );
