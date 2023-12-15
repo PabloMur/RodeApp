@@ -14,7 +14,7 @@ export default function Home() {
         <CtaBtn></CtaBtn>
         <div className="h-full w-full absolute top-0 bg-black/50"></div>
       </div>
-      <section className="h-[100vh] w-full flex justify-center items-center p-10 text-justify">
+      <section className="h-[100vh] w-full flex flex-col justify-center items-center p-10 text-justify">
         <h2>Que es RodeApp?</h2>
         <p>
           En RodeApp, nos apasiona convertir cada viaje en moto en una
