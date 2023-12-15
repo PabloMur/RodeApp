@@ -14,7 +14,23 @@ export default function Home() {
         <CtaBtn></CtaBtn>
         <div className="h-full w-full absolute top-0 bg-black/50"></div>
       </div>
-      <section className="h-[100vh] w-full bg-red-400">Quienes somos</section>
+      <section className="h-[100vh] w-full flex justify-center items-center p-10 text-justify">
+        <h2>Que es RodeApp?</h2>
+        <p>
+          En RodeApp, nos apasiona convertir cada viaje en moto en una
+          experiencia inolvidable. Somos motoviajeros, exploradores de
+          carreteras y amantes de la libertad sobre dos ruedas. Nuestra misión
+          es simple: Facilitar la planificación de tus viajes en moto. Desde la
+          emocionante anticipación de trazar rutas personalizadas hasta
+          descubrir parajes ocultos y compartir experiencias con otros moteros,
+          RodeApp es tu compañero integral para cada aventura. Con
+          funcionalidades intuitivas y detallada información sobre tus viajes,
+          estamos aquí para hacer que cada kilómetro cuente. Únete a la
+          comunidad de RodeApp y descubre un mundo de posibilidades en cada giro
+          del camino. ¡Prepárate para una nueva era en la planificación de
+          viajes en moto con RodeApp!
+        </p>
+      </section>
       <section className="h-[100vh] w-full bg-green-400">Beneficios</section>
       <section className="min-h-[100vh] w-full">
         Testimonios

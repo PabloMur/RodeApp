@@ -7,7 +7,7 @@ const TestimonialCard = ({
   avatar,
 }: any) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-white p-6 rounded-lg shadow-md m-2">
       <div className="flex items-center mb-4">
         <img src={avatar} alt={name} className="w-12 h-12 rounded-full mr-4" />
         <div>
