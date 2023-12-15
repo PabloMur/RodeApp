@@ -10,6 +10,10 @@ export default function Navbar() {
       <ManuDesplegable>
         <MenuLiBtn content={"Calculator"}></MenuLiBtn>
         <MenuLiBtn content={"Lists"}></MenuLiBtn>
+        <MenuLiBtn content={"Profile"}></MenuLiBtn>
+        <MenuLiBtn content={"Navigation"}></MenuLiBtn>
+        <MenuLiBtn content={"My Bikes"}></MenuLiBtn>
+        <MenuLiBtn content={"SOS"}></MenuLiBtn>
       </ManuDesplegable>
     </nav>
   );
