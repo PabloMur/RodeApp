@@ -32,7 +32,7 @@ export default function Home() {
           viajes en moto con RodeApp!
         </p>
       </section>
-      <section className="min-h-[100vh] w-full bg-green-400 p-2 gap-2 flex overflow-x-scroll snap-x">
+      <section className="min-h-[100vh] w-full bg-green-400 p-2 gap-2 flex overflow-x-scroll scroll-smooth snap-mandatory snap-x">
         <BenefitCard
           title="Planificación Intuitiva"
           description="Trazar rutas personalizadas y descubrir destinos emocionantes nunca fue tan fácil."
