@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import { menuAtom } from "@/atoms";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 export function useGoTo() {
   const router = useRouter();
@@ -15,5 +15,21 @@ export function useMenuLi() {
   return (route: string) => {
     goto(route);
     menuStatusSetter(!menuStatus);
+  };
+}
+
+export function useLogoHook() {
+  const goto = useGoTo();
+  const menuStatusSetter = useSetRecoilState(menuAtom);
+  return () => {
+    goto("/");
+    menuStatusSetter(false);
+  };
+}
+
+export function useCTA() {
+  const goto = useGoTo();
+  return () => {
+    goto("/login");
   };
 }
