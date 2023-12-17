@@ -4,7 +4,7 @@ import ManuDesplegable from "./ui/MenuDesplegable";
 import MenuLiBtn from "./ui/Buttons/MenuLiBtn";
 export default function Navbar() {
   return (
-    <nav className="bg-orange-500  w-full flex justify-between items-center p-2 h-[12vh] relative">
+    <nav className="bg-orange-500  w-full flex justify-between items-center p-2 h-[12vh] relative px-4">
       <Logo></Logo>
       <BurguerBtn></BurguerBtn>
       <ManuDesplegable>

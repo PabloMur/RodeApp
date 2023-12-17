@@ -25,7 +25,10 @@ const Lines = ({ status, setter }: any) => {
     setter(!status);
   };
   return (
-    <button onClick={handleClick}>
+    <button
+      onClick={handleClick}
+      className="rounded-full border border-black p-2"
+    >
       <Image
         alt="imagen svg de tres lines"
         src={lines}
