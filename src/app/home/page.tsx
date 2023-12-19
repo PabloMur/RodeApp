@@ -1,12 +1,11 @@
-"use client";
+import WeatherGadget from "@/components/WeatherGadget";
 import WelcomeCard from "@/components/cards/WelcomeCard";
-import { useSession } from "next-auth/react";
+
 export default function MainPanel() {
-  const { data: session } = useSession();
   return (
-    <div className="flex  flex-col justify-start items-center h-[88vh] w-full p-2">
+    <div className="flex  flex-col justify-start items-center h-[88vh] w-full p-2 gap-2">
       <WelcomeCard></WelcomeCard>
-      <h2>Welcome {session?.user?.name}</h2>
+      <WeatherGadget></WeatherGadget>
     </div>
   );
 }
