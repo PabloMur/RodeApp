@@ -80,7 +80,7 @@ export default function Home() {
         />
       </section>
       <section className="min-h-[100vh] w-full">
-        Testimonios
+        <h3>Algunos testimonios</h3>
         <TestimonialCard
           name="Juan Hernandez"
           location="Buenos Aires, Argentina"

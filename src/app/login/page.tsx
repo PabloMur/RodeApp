@@ -1,6 +1,10 @@
 "use client";
-import { signIn } from "next-auth/react";
+import { useSignin } from "@/hooks";
+import { useSession } from "next-auth/react";
 export default function Login() {
+  const { data: session } = useSession();
+  const signIn = useSignin();
+  console.log(session);
   return (
     <div>
       Login page
