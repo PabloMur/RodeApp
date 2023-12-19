@@ -74,13 +74,13 @@ export function useSignin() {
   //Este hook es para iniciar sesion
   return async () => {
     await signIn("google", {
-      callbackUrl: `${process.env.NEXT_PUBLIC_ENV}/home`,
+      callbackUrl: `${process.env.NEXT_PUBLIC_ENV}home`,
     });
   };
 }
 
 export function useLogOut() {
   return async () => {
-    await signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_ENV}/` });
+    await signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_ENV}` });
   };
 }
