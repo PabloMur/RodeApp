@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { menuAtom } from "@/atoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { signIn, signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export function useGoTo() {
   const router = useRouter();
@@ -22,8 +22,9 @@ export function useMenuLi() {
 export function useLogoHook() {
   const goto = useGoTo();
   const menuStatusSetter = useSetRecoilState(menuAtom);
+  const { data: session } = useSession();
   return () => {
-    goto("/");
+    session ? goto("/home") : goto("/");
     menuStatusSetter(false);
   };
 }
@@ -38,16 +39,12 @@ export function useCTA() {
 export function useSignin() {
   //Este hook es para iniciar sesion
   return async () => {
-    console.log(process.env.NEXT_PUBLIC_ENV);
-
-    await signIn("google", {
-      callbackUrl: `${process.env.NEXT_PUBLIC_ENV}/home`,
-    });
+    await signIn("google", { callbackUrl: `${process.env.NEXTAUTH_URL}/home` });
   };
 }
 
 export function useLogOut() {
   return async () => {
-    await signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_ENV}/` });
+    await signOut({ callbackUrl: `${process.env.NEXTAUTH_URL}/` });
   };
 }
