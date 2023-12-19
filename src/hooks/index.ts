@@ -2,6 +2,40 @@ import { useRouter } from "next/navigation";
 import { menuAtom } from "@/atoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+
+interface Location {
+  latitude: number;
+  longitude: number;
+}
+
+interface GeolocationHook {
+  location: Location | null;
+  error: string | null;
+}
+
+export function useGeolocation(): GeolocationHook {
+  const [location, setLocation] = useState<Location | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLocation({ latitude, longitude });
+        },
+        (error) => {
+          setError(error.message);
+        }
+      );
+    } else {
+      setError("Geolocalización no está soportada en este navegador");
+    }
+  }, []); // El segundo parámetro [] asegura que useEffect solo se ejecute una vez al montar el componente
+
+  return { location, error };
+}
 
 export function useGoTo() {
   const router = useRouter();
@@ -39,6 +73,8 @@ export function useCTA() {
 export function useSignin() {
   //Este hook es para iniciar sesion
   return async () => {
+    console.log(process.env.NEXTAUTH_URL);
+
     await signIn("google", { callbackUrl: `${process.env.NEXTAUTH_URL}/home` });
   };
 }
