@@ -38,12 +38,12 @@ export function useCTA() {
 export function useSignin() {
   //Este hook es para iniciar sesion
   return async () => {
-    await signIn("google", { callbackUrl: "http://localhost:3000/home" });
+    await signIn("google", { callbackUrl: `${process.env.ENV}/home` });
   };
 }
 
 export function useLogOut() {
   return async () => {
-    await signOut({ callbackUrl: "http://localhost:3000/" });
+    await signOut({ callbackUrl: `${process.env.ENV}/` });
   };
 }
