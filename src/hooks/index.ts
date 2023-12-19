@@ -73,14 +73,14 @@ export function useCTA() {
 export function useSignin() {
   //Este hook es para iniciar sesion
   return async () => {
-    console.log(process.env.NEXTAUTH_URL);
-
-    await signIn("google", { callbackUrl: `${process.env.NEXTAUTH_URL}/home` });
+    await signIn("google", {
+      callbackUrl: `${process.env.NEXT_PUBLIC_ENV}/home`,
+    });
   };
 }
 
 export function useLogOut() {
   return async () => {
-    await signOut({ callbackUrl: `${process.env.NEXTAUTH_URL}/` });
+    await signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_ENV}/` });
   };
 }
