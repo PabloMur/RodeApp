@@ -5,8 +5,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 interface Location {
-  latitude: number;
-  longitude: number;
+  latitude: any;
+  longitude: any;
 }
 
 interface GeolocationHook {
@@ -23,6 +23,8 @@ export function useGeolocation(): GeolocationHook {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
+          console.log(latitude, longitude);
+
           setLocation({ latitude, longitude });
         },
         (error) => {
