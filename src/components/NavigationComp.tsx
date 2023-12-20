@@ -1,24 +1,44 @@
-"use client";
+import React, { useState } from "react";
+import ReactMapGL, { ViewState, Marker } from "react-map-gl";
 
-import { useRef, useState } from "react";
-import ReactMapGL, { Marker, Popup, ViewState } from "react-map-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
-export default function MyComponent() {
-  const mapRef = useRef<any>(null);
+const MyComponent = () => {
   const [viewport, setViewport] = useState({
     latitude: 43,
     longitude: -79,
     zoom: 10,
   });
+
+  const [location, setLocation] = useState();
+
+  const getLocation = () => {
+    // Obtiene la ubicación del usuario
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLocation({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+    });
+  };
+
+  useEffect(() => {
+    // Obtiene la ubicación del usuario una vez
+    getLocation();
+  }, []);
+
+  const marker = new Marker({
+    latitude: location.latitude,
+    longitude: location.longitude,
+    title: "Mi ubicación",
+  });
+
   return (
-    <div className="relative">
-      <ReactMapGL
-        {...viewport}
-        width="100%"
-        height="calc(100vh-64px)"
-        mapboxApiAccessToken={process.env.MAPBOX_API_TOKEN}
-        ref={mapRef}
-      ></ReactMapGL>
-    </div>
+    <ReactMapGL
+      {...viewport}
+      width="100%"
+      height="500px"
+      mapboxApiAccessToken="YOUR_MAPBOX_ACCESS_TOKEN"
+    >
+      {marker}
+    </ReactMapGL>
   );
-}
+};
