@@ -33,16 +33,16 @@ export default function WeatherGadget() {
   } = weatherData as any;
 
   return (
-    <div className="border-2 border-orange-500 rounded-2xl p-4 w-full flex justify-center items-center h-40">
+    <div className="border-2 border-orange-500 rounded-2xl p-4 w-full flex justify-center items-center h-40 text-orange-500">
       <div className="flex items-center">
-        <div className="w-2/3">
-          <p className="text-sm">{description}</p>
+        <div className="w-2/3 flex flex-col h-[100%] gap-2">
+          <p className="text-md font-bold">{description}</p>
           <p className="text-xs">
             Ubicación: {location.name}, {location.region}, {location.country}
           </p>
         </div>
-        <div className="p-4 w-full flex justify-center items-center h-40">
-          <p className="text-3xl font-bold flex">{temperature} °C</p>
+        <div className="p-4 w-full flex flex-col-reverse justify-center items-center h-40">
+          <p className="text-4xl font-bold flex">{temperature} °C</p>
           <Image
             src={`https:${icon}`}
             alt={`Clima actual`}
