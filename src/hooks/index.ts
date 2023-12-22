@@ -3,6 +3,7 @@ import { menuAtom } from "@/atoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { APIgetWeather } from "@/lib/APICalls";
 
 interface Location {
   latitude: any;
@@ -10,22 +11,22 @@ interface Location {
 }
 
 interface GeolocationHook {
-  location: Location | null;
+  weatherData: Location | null;
   error: string | null;
 }
 
 export function useGeolocation(): GeolocationHook {
-  const [location, setLocation] = useState<Location | null>(null);
+  const [weatherData, setLocation] = useState<Location | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
+        async (position) => {
           const { latitude, longitude } = position.coords;
-          console.log(latitude, longitude);
-
-          setLocation({ latitude, longitude });
+          const weather = await APIgetWeather(latitude, longitude);
+          console.log(weather);
+          setLocation(weather);
         },
         (error) => {
           setError(error.message);
@@ -34,9 +35,9 @@ export function useGeolocation(): GeolocationHook {
     } else {
       setError("Geolocalización no está soportada en este navegador");
     }
-  }, []); // El segundo parámetro [] asegura que useEffect solo se ejecute una vez al montar el componente
+  }, []);
 
-  return { location, error };
+  return { weatherData, error };
 }
 
 export function useGoTo() {
@@ -86,3 +87,14 @@ export function useLogOut() {
     await signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_ENV}/` });
   };
 }
+
+// export const useGetWeather = () => {
+//   const { location } = useGeolocation();
+//   return async () => {
+//     const weather = await APIgetWeather(
+//       location?.latitude,
+//       location?.longitude
+//     );
+//     return weather;
+//   };
+// };
