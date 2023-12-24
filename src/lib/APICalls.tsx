@@ -1,4 +1,14 @@
-export async function APIgetWeather(lat: any, lng: any) {
+import axios, { AxiosResponse } from "axios";
+
+interface ApiResponse<T> {
+  data: T | null;
+  error?: string;
+}
+
+export const getWeather = async (
+  lat: number,
+  lng: number
+): Promise<ApiResponse<any>> => {
   const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${lat}%2C${lng}`;
   const options = {
     method: "GET",
@@ -9,10 +19,35 @@ export async function APIgetWeather(lat: any, lng: any) {
   };
 
   try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-    return result;
+    const response: AxiosResponse<any> = await axios.get(url, options);
+    return { data: response.data };
   } catch (error) {
-    console.error(error);
+    console.error(
+      "Error en la llamada API para obtener datos del clima:",
+      error
+    );
+    return { data: null, error: "Error al obtener datos del clima" };
   }
-}
+};
+
+export const createList = async (
+  name: string,
+  creatorEmail: string,
+  category: string
+): Promise<ApiResponse<string>> => {
+  try {
+    const response: AxiosResponse<string> = await axios.post(
+      "/api/createList",
+      {
+        name,
+        creatorEmail,
+        category,
+      }
+    );
+
+    return { data: response.data };
+  } catch (error) {
+    console.error("Error en la llamada API para crear la lista:", error);
+    return { data: null, error: "Error al crear la lista" };
+  }
+};
