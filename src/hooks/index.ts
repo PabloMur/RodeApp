@@ -3,7 +3,7 @@ import { menuAtom } from "@/atoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { APIgetWeather } from "@/lib/APICalls";
+import { getWeather } from "@/lib/APICalls";
 
 interface Location {
   latitude: any;
@@ -24,7 +24,7 @@ export function useGeolocation(): GeolocationHook {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
-          const weather = await APIgetWeather(latitude, longitude);
+          const weather = (await getWeather(latitude, longitude)) as any;
           console.log(weather);
           setLocation(weather);
         },

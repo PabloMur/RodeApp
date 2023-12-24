@@ -1,4 +1,4 @@
-import { firestore } from "@/lib/firebase";
+import { firestore } from "@/lib/FirebaseConn";
 
 export interface ListItemModel {
   name: string;
@@ -24,7 +24,7 @@ export class ListModel {
   }
 
   // Método estático para crear una instancia de ListModel desde un documento de Firestore
-  static fromFirestore(doc: firestore.QueryDocumentSnapshot): ListModel {
+  static fromFirestore(doc: any): ListModel {
     const data = doc.data();
     const id = doc.id;
     const name = data.name;

@@ -20,7 +20,7 @@ export const getWeather = async (
 
   try {
     const response: AxiosResponse<any> = await axios.get(url, options);
-    return { data: response.data };
+    return response.data;
   } catch (error) {
     console.error(
       "Error en la llamada API para obtener datos del clima:",
