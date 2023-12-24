@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function WelcomeCard() {
   const { data: session } = useSession();
   return (
-    <div className="border-2 border-orange-500 rounded-2xl p-4 w-full flex justify-between items-center">
+    <div className="border-2 border-orange-500 rounded-2xl p-4 w-full flex justify-between items-center text-orange-500">
       <h2>Welcome</h2>
       <div className=" flex justify-center items-center gap-3">
         <h2>{session?.user?.name}</h2>

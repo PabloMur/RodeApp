@@ -115,7 +115,6 @@ export default function Home() {
           avatar="https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg"
         />
       </section>
-      <section className="h-[100vh] w-full bg-blue-400">Galeria</section>
     </div>
   );
 }
