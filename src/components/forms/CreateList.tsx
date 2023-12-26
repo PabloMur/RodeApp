@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+//Hacer que el boton de submit sea un componente de ui
 
 export default function ListForm() {
   const [name, setName] = useState("");
@@ -34,7 +35,7 @@ export default function ListForm() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md text-black">
+    <div className="max-w-md mx-auto mt-8 p-6 shadow-md text-orange-500 border-2 border-orange-500 rounded-2xl">
       <h2 className="text-2xl font-semibold mb-4">Crear Nueva Lista</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -50,23 +51,6 @@ export default function ListForm() {
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label
-            htmlFor="creatorEmail"
-            className="block text-sm font-medium text-gray-600"
-          >
-            Email del Creador
-          </label>
-          <input
-            type="email"
-            id="creatorEmail"
-            name="creatorEmail"
-            value={creatorEmail}
-            onChange={(e) => setCreatorEmail(e.target.value)}
             className="mt-1 p-2 w-full border rounded-md"
           />
         </div>
@@ -106,7 +90,7 @@ export default function ListForm() {
             />
             <button
               type="button"
-              className="bg-blue-500 text-white px-4 py-2 rounded-r-md"
+              className="bg-orange-500 text-black px-4 py-2 rounded-r-md"
               onClick={handleAddItem}
             >
               Agregar
@@ -130,7 +114,7 @@ export default function ListForm() {
 
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white px-4 py-2 rounded-md"
+          className="w-full bg-orange-500 text-black px-4 py-2 rounded-md"
         >
           Crear Lista
         </button>
