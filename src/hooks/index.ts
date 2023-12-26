@@ -25,7 +25,6 @@ export function useGeolocation(): GeolocationHook {
         async (position) => {
           const { latitude, longitude } = position.coords;
           const weather = (await getWeather(latitude, longitude)) as any;
-          console.log(weather);
           setLocation(weather);
         },
         (error) => {

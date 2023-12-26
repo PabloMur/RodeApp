@@ -1,3 +1,4 @@
+import RecentList from "@/components/RecentList";
 import WeatherGadget from "@/components/WeatherGadget";
 import CreateListCard from "@/components/cards/CreateList";
 import NavigateCard from "@/components/cards/NavigateCard";
@@ -12,6 +13,7 @@ export default function MainPanel() {
         <NavigateCard></NavigateCard>
         <CreateListCard></CreateListCard>
       </div>
+      <RecentList></RecentList>
     </div>
   );
 }
