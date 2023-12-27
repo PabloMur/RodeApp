@@ -17,7 +17,7 @@ export default function WeatherGadget() {
   // Manejar el caso de carga
   if (!weatherData) {
     return (
-      <div className="border-2 border-gray-500 rounded-2xl p-4 w-full flex justify-center items-center h-40">
+      <div className="border-2 border-orange-500 rounded-2xl p-4 w-full flex justify-center items-center h-40 text-orange-500">
         Cargando datos...
       </div>
     );
