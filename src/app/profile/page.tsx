@@ -1,3 +1,9 @@
+import ProfileDetails from "@/components/ProfileGadget";
+
 export default function Profile() {
-  return <div>Profile page</div>;
+  return (
+    <div>
+      <ProfileDetails></ProfileDetails>
+    </div>
+  );
 }
