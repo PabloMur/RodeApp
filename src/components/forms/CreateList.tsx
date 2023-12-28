@@ -41,7 +41,7 @@ export default function ListForm() {
         <div className="mb-4">
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-600"
+            className="block text-sm font-medium text-orange-500"
           >
             Nombre de la Lista
           </label>
@@ -58,7 +58,7 @@ export default function ListForm() {
         <div className="mb-4">
           <label
             htmlFor="category"
-            className="block text-sm font-medium text-gray-600"
+            className="block text-sm font-medium text-orange-500"
           >
             Categoría
           </label>
@@ -75,7 +75,7 @@ export default function ListForm() {
         <div className="mb-4">
           <label
             htmlFor="items"
-            className="block text-sm font-medium text-gray-600"
+            className="block text-sm font-medium text-orange-500"
           >
             Items
           </label>
