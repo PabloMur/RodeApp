@@ -51,7 +51,7 @@ export default function ListForm() {
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full border-2 rounded-md bg-black border-orange-500"
           />
         </div>
 
@@ -68,7 +68,7 @@ export default function ListForm() {
             name="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full border-2 bg-black border-orange-500 rounded-md"
           />
         </div>
 
@@ -86,7 +86,7 @@ export default function ListForm() {
               name="items"
               value={items}
               onChange={(e) => setItems(e.target.value)}
-              className="mt-1 p-2 w-full border rounded-l-md"
+              className="mt-1 p-2 w-full rounded-l-md border-2 bg-black border-orange-500"
             />
             <button
               type="button"
