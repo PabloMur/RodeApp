@@ -1,5 +1,7 @@
 "use client";
 import { useGoTo } from "@/hooks";
+import navigationIcon from "../../../public/navigation.svg";
+import Image from "next/image";
 export default function NavigateCard() {
   const goto = useGoTo();
   return (
@@ -10,6 +12,13 @@ export default function NavigateCard() {
       }}
     >
       Navegar
+      <Image
+        src={navigationIcon}
+        alt="navigation icon"
+        width={25}
+        height={25}
+        className="m-2"
+      ></Image>
     </div>
   );
 }
