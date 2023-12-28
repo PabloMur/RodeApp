@@ -1,10 +1,11 @@
 "use client";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 //Hacer que el boton de submit sea un componente de ui
 
 export default function ListForm() {
+  const { data: session } = useSession();
   const [name, setName] = useState("");
-  const [creatorEmail, setCreatorEmail] = useState("");
   const [category, setCategory] = useState("");
   const [items, setItems] = useState("");
   const [itemList, setItemList] = useState<string[]>([]);
@@ -29,7 +30,7 @@ export default function ListForm() {
 
     // Mostrar los datos de la lista resultante en la consola
     console.log("Nombre:", name);
-    console.log("Email del Creador:", creatorEmail);
+    console.log("Email del Creador:", session?.user?.email);
     console.log("Categoría:", category);
     console.log("Lista de Items:", itemList);
   };
