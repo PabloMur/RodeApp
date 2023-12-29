@@ -79,8 +79,6 @@ export class ListModel {
         .collection("list")
         .doc(newId)
         .set(this.toFirestoreObject());
-
-      console.log("Lista guardada en Firestore correctamente");
     } catch (error) {
       console.error("Error al guardar la lista en Firestore:", error);
     }

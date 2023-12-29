@@ -1,9 +1,9 @@
 import { useRouter } from "next/navigation";
-import { menuAtom } from "@/atoms";
+import { loaderAtom, menuAtom } from "@/atoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { getWeather } from "@/lib/APICalls";
+import { createList, getWeather } from "@/lib/APICalls";
 
 interface Location {
   latitude: any;
@@ -87,13 +87,12 @@ export function useLogOut() {
   };
 }
 
-// export const useGetWeather = () => {
-//   const { location } = useGeolocation();
-//   return async () => {
-//     const weather = await APIgetWeather(
-//       location?.latitude,
-//       location?.longitude
-//     );
-//     return weather;
-//   };
-// };
+export function useCreateList() {
+  const loaderSetter = useSetRecoilState(loaderAtom);
+  return async function (list: any) {
+    loaderSetter(true);
+    const createdList = await createList(list);
+    loaderSetter(false);
+    return createdList;
+  };
+}

@@ -13,10 +13,9 @@ export async function createList(req: NextRequest): Promise<NextResponse> {
 
     // Guarda la nueva lista en la base de datos
     const createdList = await newList.saveToListFirestore();
-    console.log(createdList);
 
     // Devuelve una respuesta con la lista recién creada
-    return NextResponse.json({ createList }, { status: 201 });
+    return NextResponse.json({ createdList }, { status: 201 });
   } catch (error) {
     // Devuelve una respuesta de error en caso de problemas
     return NextResponse.json(

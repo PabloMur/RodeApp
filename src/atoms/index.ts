@@ -9,3 +9,8 @@ export const userLocation = atom({
   key: "userLocationAtom",
   default: {},
 });
+
+export const loaderAtom = atom({
+  key: "loaderAtom",
+  default: false,
+});

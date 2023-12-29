@@ -30,11 +30,12 @@ export const getWeather = async (
   }
 };
 
-export const createList = async (
-  name: string,
-  creatorEmail: string,
-  category: string
-): Promise<ApiResponse<string>> => {
+export const createList = async ({
+  name,
+  creatorEmail,
+  category,
+  items,
+}: any): Promise<ApiResponse<string>> => {
   try {
     const response: AxiosResponse<string> = await axios.post(
       "/api/createList",
@@ -42,6 +43,7 @@ export const createList = async (
         name,
         creatorEmail,
         category,
+        items,
       }
     );
 

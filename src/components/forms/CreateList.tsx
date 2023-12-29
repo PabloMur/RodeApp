@@ -1,4 +1,5 @@
 "use client";
+import { useCreateList } from "@/hooks";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 //Hacer que el boton de submit sea un componente de ui
@@ -9,6 +10,7 @@ export default function ListForm() {
   const [category, setCategory] = useState("");
   const [items, setItems] = useState("");
   const [itemList, setItemList] = useState<string[]>([]);
+  const listCreator = useCreateList();
 
   const handleAddItem = () => {
     if (items.trim() !== "") {
@@ -23,16 +25,19 @@ export default function ListForm() {
     setItemList(newItems);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    // Validar y procesar el formulario
-
-    // Mostrar los datos de la lista resultante en la consola
-    console.log("Nombre:", name);
-    console.log("Email del Creador:", session?.user?.email);
-    console.log("Categoría:", category);
-    console.log("Lista de Items:", itemList);
+    await listCreator({
+      name,
+      category,
+      items: itemList,
+      creatorEmail: session?.user?.email,
+    });
+    setName("");
+    setCategory("");
+    setItems("");
+    setItemList([]);
   };
 
   return (
