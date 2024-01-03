@@ -18,7 +18,7 @@ export default function WeatherGadget() {
   if (!weatherData) {
     return (
       <div className="border-2 border-orange-500 rounded-2xl p-4 w-full flex justify-center items-center h-40 text-orange-500">
-        Cargando datos...
+        Cargando datos del clima ...
       </div>
     );
   }

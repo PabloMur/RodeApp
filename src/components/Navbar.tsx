@@ -9,9 +9,10 @@ export default function Navbar() {
       <Logo></Logo>
       <BurguerBtn></BurguerBtn>
       <ManuDesplegable>
-        <MenuLiBtn route={"/lists"} content={"Lists"}></MenuLiBtn>
-        <MenuLiBtn route={"/profile"} content={"Profile"}></MenuLiBtn>
-        <MenuLiBtn route={"/navigation"} content={"Navigation"}></MenuLiBtn>
+        <MenuLiBtn route={"/lists"} content={"Crear Lista"}></MenuLiBtn>
+        <MenuLiBtn route={"/my-lists"} content={"Mis Listas"}></MenuLiBtn>
+        <MenuLiBtn route={"/profile"} content={"Perfil"}></MenuLiBtn>
+        <MenuLiBtn route={"/navigation"} content={"Navegar"}></MenuLiBtn>
         <SignoutBtn></SignoutBtn>
       </ManuDesplegable>
     </nav>
