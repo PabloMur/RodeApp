@@ -65,8 +65,28 @@ export class ListModel {
     };
   }
 
+  static async getListsByEmail(email: string) {
+    try {
+      const querySnapshot = await firestore
+        .collection("list")
+        .where("creatorEmail", "==", email)
+        .get();
+
+      const promises = querySnapshot.docs.map(async (doc) => {
+        return await ListModel.createList(doc);
+      });
+
+      const lists = await Promise.all(promises);
+
+      return lists;
+    } catch (error) {
+      console.error("Error al obtener listas por email:", error);
+      throw error;
+    }
+  }
+
   // Método para almacenar la lista en Firestore
-  async saveToListFirestore(): Promise<void> {
+  async saveToListFirestore(): Promise<any> {
     try {
       // Paso 1: Crea un nuevo documento y obtén la referencia
       const docRef = await firestore.collection("list").add({});
@@ -75,10 +95,12 @@ export class ListModel {
       const newId = docRef.id;
 
       // Paso 3: Actualiza el documento con los datos adicionales
-      await firestore
+      const newList: any = await firestore
         .collection("list")
         .doc(newId)
         .set(this.toFirestoreObject());
+
+      return { newList, listId: newId };
     } catch (error) {
       console.error("Error al guardar la lista en Firestore:", error);
     }

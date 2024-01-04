@@ -3,7 +3,7 @@ import { loaderAtom, menuAtom } from "@/atoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { createList, getWeather } from "@/lib/APICalls";
+import { createList, getUserLists, getWeather } from "@/lib/APICalls";
 
 interface Location {
   latitude: any;
@@ -94,5 +94,14 @@ export function useCreateList() {
     const createdList = await createList(list);
     loaderSetter(false);
     return createdList;
+  };
+}
+
+export function useGetUserList() {
+  const { data: session } = useSession();
+  const userEmail = session?.user?.email || "";
+  return async () => {
+    const lists = await getUserLists(userEmail);
+    return lists;
   };
 }

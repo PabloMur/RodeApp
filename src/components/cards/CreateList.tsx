@@ -6,12 +6,12 @@ export default function CreateListCard() {
   const goto = useGoTo();
   return (
     <div
-      className=" rounded-xl bg-orange-500 w-1/2 p-4 flex justify-center items-center h-32 text-black text-xl box-border cursor-pointer gap-2"
+      className=" rounded-xl bg-orange-500 w-1/2 p-4 flex justify-center items-center h-32 text-black text-xl box-border cursor-pointer"
       onClick={() => {
         goto("/lists");
       }}
     >
-      <p className="text-xl">Crear lista</p>
+      <p className="text-xl bg-red-400">Crear lista</p>
       <Image src={plus} alt={"icono de plus"} width={25} height={25}></Image>
     </div>
   );
