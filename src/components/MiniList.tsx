@@ -10,7 +10,7 @@ export default function MiniList({ title, id }: any) {
   return (
     <div
       onClick={handleClick}
-      className="text-black bg-orange-500 p-4 w-full rounded-xl font-bold text-xl flex justify-center items-center"
+      className="text-black bg-orange-500 p-4 w-full rounded-xl font-bold text-xl flex justify-center items-center mb-2"
     >
       <p>{title}</p>
     </div>
