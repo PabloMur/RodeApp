@@ -75,6 +75,8 @@ export function useCTA() {
 export function useSignin() {
   //Este hook es para iniciar sesion
   return async () => {
+    console.log(process.env.NEXT_PUBLIC_ENV);
+    
     await signIn("google", {
       callbackUrl: `${process.env.NEXT_PUBLIC_ENV}/home`,
     });
@@ -98,10 +100,18 @@ export function useCreateList() {
 }
 
 export function useGetUserList() {
+  const loaderSetter = useSetRecoilState(loaderAtom)
   const { data: session } = useSession();
   const userEmail = session?.user?.email || "";
+
   return async () => {
+    loaderSetter(true)
+    console.log("trayendo los datos");
+    
     const lists = await getUserLists(userEmail);
+    console.log("trayendo los datos");
+    loaderSetter(false)
     return lists;
   };
+
 }

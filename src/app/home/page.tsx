@@ -5,6 +5,8 @@ import NavigateCard from "@/components/cards/NavigateCard";
 import WelcomeCard from "@/components/cards/WelcomeCard";
 
 export default function MainPanel() {
+  console.log(process.env.NEXT_PUBLIC_ENV,"Soy la url de local");
+  
   return (
     <div className="flex  flex-col justify-start items-center min-h-[88vh] w-full p-2 gap-2 bg-black">
       <WelcomeCard></WelcomeCard>

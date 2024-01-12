@@ -3,6 +3,7 @@ import { useSignin } from "@/hooks";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import google from "../../../public/google.svg";
+
 export default function Login() {
   const { data: session } = useSession();
   const signIn = useSignin();
