@@ -16,8 +16,8 @@ export default function Home() {
         <div className="h-full w-full absolute top-0 bg-black/50"></div>
       </div>
       <section className="min-h-[100vh] w-full flex flex-col justify-center items-center p-5">
-        <h2 className="text-bold text-2xl">Que es RodeApp?</h2>
-        <p className="text-justify">
+        <h2 className="text-bold text-2xl text-white">Que es RodeApp?</h2>
+        <p className="text-justify text-white">
           En RodeApp, nos apasiona convertir cada viaje en moto en una
           experiencia inolvidable. Somos motoviajeros, exploradores de
           carreteras y amantes de la libertad sobre dos ruedas. Nuestra misión
