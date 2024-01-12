@@ -75,8 +75,6 @@ export function useCTA() {
 export function useSignin() {
   //Este hook es para iniciar sesion
   return async () => {
-    console.log(process.env.NEXT_PUBLIC_ENV);
-    
     await signIn("google", {
       callbackUrl: `${process.env.NEXT_PUBLIC_ENV}/home`,
     });
