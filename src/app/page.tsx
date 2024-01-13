@@ -1,4 +1,3 @@
-import {firestore} from "@/lib/FirebaseConn"
 import BenefitCard from "@/components/cards/BenefitsCard";
 import TestimonialCard from "@/components/cards/TestimonialCard";
 import CtaBtn from "@/components/ui/Buttons/CtaBtn";
