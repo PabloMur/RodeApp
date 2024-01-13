@@ -76,7 +76,7 @@ export function useSignin() {
   //Este hook es para iniciar sesion
   return async () => {
     await signIn("google", {
-      callbackUrl: `${process.env.NEXT_PUBLIC_ENV}/my-lists`,
+      callbackUrl: `${process.env.NEXT_PUBLIC_ENV}/home`,
     });
   };
 }
@@ -104,10 +104,7 @@ export function useGetUserList() {
 
   return async () => {
     loaderSetter(true)
-    console.log("trayendo los datos");
-    
     const lists = await getUserLists(userEmail);
-    console.log("trayendo los datos");
     loaderSetter(false)
     return lists;
   };
