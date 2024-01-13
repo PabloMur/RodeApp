@@ -3,6 +3,7 @@ import TestimonialCard from "@/components/cards/TestimonialCard";
 import CtaBtn from "@/components/ui/Buttons/CtaBtn";
 import css from "@/styles/home.module.css";
 export default function Home() {
+  console.log(JSON.parse('{"hola":"chau"}'))
   return (
     <div>
       <div
