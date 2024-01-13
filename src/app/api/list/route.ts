@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
         error: "Error al crear la lista",
       },
       {
-        status: 500, // Utiliza un código de estado que refleje un error interno del servidor
+        status: 500
       }
     );
   }
