@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createList, getUserLists } from "@/backend/controllers/ListController";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     const createdList = await createList(req);
 
     // Devolver una respuesta JSON con la lista creada
-    return Response.json({ ok: "creando lists", createdList });
+    return NextResponse.json({ ok: "creando lists", createdList });
   } catch (error) {
     // Manejar errores y devolver una respuesta de error
     return NextResponse.json(
