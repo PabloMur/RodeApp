@@ -67,8 +67,13 @@ export function useLogoHook() {
 
 export function useCTA() {
   const goto = useGoTo();
+  const { data: session } = useSession();
   return () => {
-    goto("/login");
+    if (session?.user) {
+      goto("/home");
+    } else {
+      goto("/login");
+    }
   };
 }
 
@@ -98,15 +103,14 @@ export function useCreateList() {
 }
 
 export function useGetUserList() {
-  const loaderSetter = useSetRecoilState(loaderAtom)
+  const loaderSetter = useSetRecoilState(loaderAtom);
   const { data: session } = useSession();
   const userEmail = session?.user?.email || "";
 
   return async () => {
-    loaderSetter(true)
+    loaderSetter(true);
     const lists = await getUserLists(userEmail);
-    loaderSetter(false)
+    loaderSetter(false);
     return lists;
   };
-
 }
