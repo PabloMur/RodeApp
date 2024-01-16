@@ -13,15 +13,15 @@ export async function POST(req: NextRequest) {
         error: "Error al crear la lista",
       },
       {
-        status: 500, // Utiliza un código de estado que refleje un error interno del servidor
+        status: 500,
       }
     );
   }
 }
 
-export async function GET(req: NextRequest) {
+export function GET(req: NextRequest) {
   try {
-    const lists = await getUserLists(req);
+    const lists = getUserLists(req);
     // Devolver las listas como respuesta JSON
     return NextResponse.json({ lists });
   } catch (error) {

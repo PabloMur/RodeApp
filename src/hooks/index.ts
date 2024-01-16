@@ -98,10 +98,15 @@ export function useCreateList() {
 }
 
 export function useGetUserList() {
+  const loaderSetter = useSetRecoilState(loaderAtom)
   const { data: session } = useSession();
   const userEmail = session?.user?.email || "";
+
   return async () => {
+    loaderSetter(true)
     const lists = await getUserLists(userEmail);
+    loaderSetter(false)
     return lists;
   };
+
 }
