@@ -11,7 +11,7 @@ export default function CreateListCard() {
         goto("/lists");
       }}
     >
-      <p className="text-xl bg-red-400">Crear lista</p>
+      <p className="text-xl mr-2">Crear lista</p>
       <Image src={plus} alt={"icono de plus"} width={25} height={25}></Image>
     </div>
   );
