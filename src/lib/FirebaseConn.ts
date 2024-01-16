@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
 
-const serviceAccount = JSON.parse(process.env.FIRESTORE_API_KEY as any);
+const serviceAccount = JSON.parse(process.env.FIRESTORE_API_KEY as string);
 
 admin.apps.length
   ? admin.app()

@@ -1,8 +1,8 @@
-// Importa los módulos necesarios
 "use client";
 import MiniList from "@/components/MiniList";
 import { useGetUserList } from "@/hooks";
 import { useEffect, useState } from "react";
+import Loader from "@/components/ui/Loader"
 
 // Componente MyListPage
 export default function MyListPage() {
@@ -34,8 +34,9 @@ export default function MyListPage() {
 
   // Renderiza el componente
   return (
-    <div className="flex flex-col justify-center items-center p-4">
+    <div className="flex flex-col justify-center items-center p-4 relative">
       <h2 className="text-orange-500 text-2xl m-4">Mis Listas</h2>
+      <Loader></Loader>
       {lists.map((list: any) => (
         <MiniList key={list.id} id={list.id} title={list.name} />
       ))}

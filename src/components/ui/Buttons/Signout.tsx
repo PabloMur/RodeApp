@@ -9,7 +9,7 @@ export default function SignoutBtn() {
       }}
       className="bg-black p-4 rounded-full w-[90%] text-md"
     >
-      Cerrar Sesión
+      <p className="text-white text-xl">Cerrar Sesión</p>
     </button>
   );
 }

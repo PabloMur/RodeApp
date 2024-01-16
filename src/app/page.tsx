@@ -2,22 +2,23 @@ import BenefitCard from "@/components/cards/BenefitsCard";
 import TestimonialCard from "@/components/cards/TestimonialCard";
 import CtaBtn from "@/components/ui/Buttons/CtaBtn";
 import css from "@/styles/home.module.css";
+
 export default function Home() {
   return (
     <div>
       <div
         className={`${css.mainContainer} flex flex-col justify-center items-center min-h-[88vh] w-full bg-white flex-grow relative`}
       >
-        <h1 className="text-2xl font-bold z-10">Bienvenido a RodeApp</h1>
-        <h3 className="z-20 text-center">
+        <h1 className="text-2xl font-bold z-10 text-white">Bienvenido a RodeApp</h1>
+        <h3 className="z-20 text-center text-white">
           Organiza todo para tu viaje en un solo lugar!
         </h3>
         <CtaBtn></CtaBtn>
         <div className="h-full w-full absolute top-0 bg-black/50"></div>
       </div>
       <section className="min-h-[100vh] w-full flex flex-col justify-center items-center p-5">
-        <h2 className="text-bold text-2xl">Que es RodeApp?</h2>
-        <p className="text-justify">
+        <h2 className="text-bold text-2xl text-white">Que es RodeApp?</h2>
+        <p className="text-justify text-white">
           En RodeApp, nos apasiona convertir cada viaje en moto en una
           experiencia inolvidable. Somos motoviajeros, exploradores de
           carreteras y amantes de la libertad sobre dos ruedas. Nuestra misión
