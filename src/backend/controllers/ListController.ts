@@ -3,7 +3,7 @@ import { ListModel } from "@/backend/models/ListModel";
 import { NextRequest, NextResponse } from "next/server";
 
 // Función para crear una nueva lista
-export async function createList(req: Request): Promise<NextResponse> {
+export async function createList(req: NextRequest) {
   try {
     // Obtén los datos del cuerpo de la solicitud
     const { name, creatorEmail, items, category } = await req.json();
@@ -32,7 +32,7 @@ export async function createList(req: Request): Promise<NextResponse> {
   }
 }
 
-export async function getUserLists(req: NextRequest): Promise<NextResponse> {
+export async function getUserLists(req: NextRequest) {
   try {
     // Paso 1: Obtener el correo electrónico del cuerpo de la solicitud
     const { searchParams } = new URL(req.url);
