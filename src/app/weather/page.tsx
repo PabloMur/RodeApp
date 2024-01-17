@@ -1,9 +1,9 @@
-import WeatherGadget from "@/components/WeatherGadget";
+import WeatherComponent from "@/components/WeatherComponent";
 
 export default function Weather() {
   return (
     <div>
-      <WeatherGadget></WeatherGadget>
+      <WeatherComponent></WeatherComponent>
     </div>
   );
 }

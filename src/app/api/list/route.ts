@@ -13,9 +13,9 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export function GET(req: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
-    const lists = getUserLists(req);
+    const lists = await getUserLists(req);
     // Devolver las listas como respuesta JSON
     return NextResponse.json({ lists });
   } catch (error) {

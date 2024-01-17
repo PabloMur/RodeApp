@@ -14,3 +14,8 @@ export const loaderAtom = atom({
   key: "loaderAtom",
   default: false,
 });
+
+export const lastListID = atom({
+  key: "lastListID",
+  default: "",
+});

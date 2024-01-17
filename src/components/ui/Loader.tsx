@@ -4,8 +4,7 @@ import { useRecoilValue } from "recoil";
 import Spinner from "@/components/ui/Spinner";
 const Loader = () => {
   const active = useRecoilValue(loaderAtom);
-  console.log("esta por aca el loader");
-  
+
   return (
     active && (
       <div className="absolute grid place-items-center h-screen w-full backdrop-blur z-20 top-0 left-0 right-0 bottom-0">
