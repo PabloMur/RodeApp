@@ -67,7 +67,6 @@ export const getUserLists = async (email: string): Promise<any> => {
 export const APIGetListData = async (id: string) => {
   try {
     const response = await axios.get(`/api/list/${id}`);
-    console.log(id);
     return { data: response.data };
   } catch (error) {
     console.error("Error en la obtencion de la informacion de la lista");

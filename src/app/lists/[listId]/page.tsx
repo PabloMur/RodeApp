@@ -19,10 +19,17 @@ export default function ListDetailsPage() {
 
   return (
     <div className="p-2">
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center mb-2">
         <p className="text-orange-500">Titulo</p>
         <h2 className="text-2xl">{listData?.data?.listData.name}</h2>
       </div>
+      <div className="flex flex-col justify-center items-center">
+        <p className="text-orange-500 text-sm">Categoria</p>
+        <h3 className="text-xl">{listData?.data?.listData.category}</h3>
+      </div>
+      {listData?.data?.listData.items.map((m: any, index: any) => {
+        return <p key={index}>{m.name}</p>;
+      })}
     </div>
   );
 }
