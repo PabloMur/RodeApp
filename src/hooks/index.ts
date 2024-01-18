@@ -1,9 +1,14 @@
 import { useRouter } from "next/navigation";
-import { loaderAtom, menuAtom } from "@/atoms";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { lastListID, loaderAtom, menuAtom } from "@/atoms";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { createList, getUserLists, getWeather } from "@/lib/APICalls";
+import {
+  APIGetListData,
+  createList,
+  getUserLists,
+  getWeather,
+} from "@/lib/APICalls";
 
 interface Location {
   latitude: any;
@@ -25,6 +30,8 @@ export function useGeolocation(): GeolocationHook {
         async (position) => {
           const { latitude, longitude } = position.coords;
           const weather = (await getWeather(latitude, longitude)) as any;
+          console.log(weather);
+
           setLocation(weather);
         },
         (error) => {
@@ -67,8 +74,13 @@ export function useLogoHook() {
 
 export function useCTA() {
   const goto = useGoTo();
+  const { data: session } = useSession();
   return () => {
-    goto("/login");
+    if (session?.user) {
+      goto("/home");
+    } else {
+      goto("/login");
+    }
   };
 }
 
@@ -98,15 +110,39 @@ export function useCreateList() {
 }
 
 export function useGetUserList() {
-  const loaderSetter = useSetRecoilState(loaderAtom)
+  const loaderSetter = useSetRecoilState(loaderAtom);
   const { data: session } = useSession();
   const userEmail = session?.user?.email || "";
 
   return async () => {
-    loaderSetter(true)
+    loaderSetter(true);
     const lists = await getUserLists(userEmail);
-    loaderSetter(false)
+    loaderSetter(false);
     return lists;
   };
+}
 
+export function useMiniList() {
+  const lastListIDSetter = useSetRecoilState(lastListID);
+  const goto = useGoTo();
+  return (id: string, route: string) => {
+    lastListIDSetter(id);
+    goto(route);
+  };
+}
+
+export function useGetListData() {
+  return async (listID: string) => {
+    const listData = await APIGetListData(listID);
+    return listData;
+  };
+}
+
+export function useGetRecentList() {
+  const listID = useRecoilValue(lastListID);
+  return async () => {
+    const listData = await APIGetListData(listID);
+    console.log(listData);
+    return listData;
+  };
 }

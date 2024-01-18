@@ -85,6 +85,29 @@ export class ListModel {
     }
   }
 
+  static async getListData(id: string) {
+    try {
+      console.log(id);
+
+      const querySnapshot = await firestore
+        .collection("list")
+        .doc(id) // Utiliza el ID directamente para obtener un documento específico
+        .get();
+
+      if (!querySnapshot.exists) {
+        // El documento no existe, puedes manejar esto según tus necesidades
+        return null;
+      }
+
+      const listData = await ListModel.createList(querySnapshot);
+
+      return listData;
+    } catch (error) {
+      console.error("Error al obtener datos de la lista por ID:", error);
+      throw error;
+    }
+  }
+
   // Método para almacenar la lista en Firestore
   async saveToListFirestore(): Promise<any> {
     try {

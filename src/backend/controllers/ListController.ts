@@ -56,4 +56,20 @@ export async function getUserLists(req: NextRequest) {
   }
 }
 
+export async function getListData(id: string) {
+  try {
+    const listData: any = await ListModel.getListData(id);
+    return listData;
+  } catch (error) {
+    return NextResponse.json(
+      {
+        error: "Error al obtener la informacion de la lista",
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+}
+
 // Función para obtener todas las listas// Función para obtener todas las listas

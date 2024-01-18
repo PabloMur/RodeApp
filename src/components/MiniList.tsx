@@ -1,16 +1,16 @@
 "use client";
 
-import { useGoTo } from "@/hooks";
+import { useGoTo, useMiniList } from "@/hooks";
 
 export default function MiniList({ title, id }: any) {
-  const goto = useGoTo();
+  const miniListHook = useMiniList();
   const handleClick = () => {
-    goto(`/lists/${id}`);
+    miniListHook(id, `/lists/${id}`);
   };
   return (
     <div
       onClick={handleClick}
-      className="text-black bg-orange-500 p-4 w-full rounded-xl font-bold text-xl flex justify-center items-center mb-2"
+      className="text-black bg-orange-500 p-4 w-full rounded-xl font-bold text-xl flex justify-center items-center mb-2 cursor-pointer"
     >
       <p>{title}</p>
     </div>

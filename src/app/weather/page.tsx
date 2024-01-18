@@ -1,3 +1,9 @@
+import WeatherComponent from "@/components/WeatherComponent";
+
 export default function Weather() {
-  return <div>Weather page donde va a estar el clima</div>;
+  return (
+    <div>
+      <WeatherComponent></WeatherComponent>
+    </div>
+  );
 }
