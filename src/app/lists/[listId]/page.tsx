@@ -1,21 +1,26 @@
 "use client";
+import ListItem from "@/components/ui/ListItem";
 import { useGetListData } from "@/hooks";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function ListDetailsPage() {
-  const listDataStatePrev: any = {};
-  const [listData, listDataSetter] = useState(listDataStatePrev);
+  const [listData, setListData] = useState<any>({});
   const listDataGetter = useGetListData();
-  const listID: any = useParams();
+  const { listId }: any = useParams();
+
   const getListData = async () => {
-    const result = await listDataGetter(listID.listId);
-    listDataSetter(result);
-    console.log(result);
+    try {
+      const result = await listDataGetter(listId);
+      setListData(result);
+    } catch (error) {
+      console.error("Error al obtener datos de la lista:", error);
+    }
   };
+
   useEffect(() => {
     getListData();
-  }, []);
+  }, [listId]);
 
   return (
     <div className="p-2">
@@ -27,9 +32,14 @@ export default function ListDetailsPage() {
         <p className="text-orange-500 text-sm">Categoria</p>
         <h3 className="text-xl">{listData?.data?.listData.category}</h3>
       </div>
-      {listData?.data?.listData.items.map((m: any, index: any) => {
-        return <p key={index}>{m.name}</p>;
-      })}
+      <div className="p-2">
+        {/* Añade un paréntesis de cierre en Object.values() */}
+        {Object.values(listData?.data?.listData.items || {}).map(
+          (item: any) => (
+            <ListItem index={item.id} name={item.name} status={item.status} />
+          )
+        )}
+      </div>
     </div>
   );
 }
