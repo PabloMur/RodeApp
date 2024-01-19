@@ -45,7 +45,7 @@ export default function ListDetailsPage() {
           (item: any, index) => (
             <ListItem
               key={index}
-              index={item.id}
+              index={index}
               name={item.name}
               status={item.status}
             />
