@@ -1,5 +1,5 @@
 import { useRouter } from "next/navigation";
-import { lastListID, loaderAtom, menuAtom } from "@/atoms";
+import { deleteListModal, lastListID, loaderAtom, menuAtom } from "@/atoms";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -144,5 +144,13 @@ export function useGetRecentList() {
     const listData = await APIGetListData(listID);
     console.log(listData);
     return listData;
+  };
+}
+
+export function useDeleteList() {
+  const [deleteListAtom, deleteListAtomSetter] =
+    useRecoilState(deleteListModal);
+  return () => {
+    deleteListAtomSetter(!deleteListAtom);
   };
 }

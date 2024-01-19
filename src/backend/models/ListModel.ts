@@ -102,8 +102,6 @@ export class ListModel {
 
   static async getListData(id: string) {
     try {
-      console.log(id);
-
       const querySnapshot = await firestore
         .collection("list")
         .doc(id) // Utiliza el ID directamente para obtener un documento específico

@@ -1,8 +1,11 @@
 "use client";
+import DeleteListBtn from "@/components/ui/Buttons/DeleteListBtn";
 import ListItem from "@/components/ui/ListItem";
 import { useGetListData } from "@/hooks";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { deleteListModal } from "@/atoms";
+import DeleteListModal from "@/components/modals/DeleteListModal";
 
 //recordar que esto es una pagina, por lo que se deben migrar todos estos mecanismos a su respectiva representacion como componentes
 
@@ -25,12 +28,9 @@ export default function ListDetailsPage() {
   }, [listId]);
 
   return (
-    <div className="p-2">
-      <div className="p-2 flex justify-end items-center">
-        <button className="text-red-500 p-2 border rounded-xl border-red-500">
-          Eliminar lista
-        </button>
-      </div>
+    <div className="p-2 relative min-h-[90vh]">
+      <DeleteListModal></DeleteListModal>
+      <DeleteListBtn></DeleteListBtn>
       <div className="flex flex-col justify-center items-center mb-2">
         <p className="text-orange-500">Titulo</p>
         <h2 className="text-2xl">{listData?.data?.listData.name}</h2>
