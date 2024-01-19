@@ -24,6 +24,11 @@ export default function ListDetailsPage() {
 
   return (
     <div className="p-2">
+      <div className="p-2 flex justify-end items-center">
+        <button className="text-red-500 p-2 border rounded-xl border-red-500">
+          Eliminar lista
+        </button>
+      </div>
       <div className="flex flex-col justify-center items-center mb-2">
         <p className="text-orange-500">Titulo</p>
         <h2 className="text-2xl">{listData?.data?.listData.name}</h2>
