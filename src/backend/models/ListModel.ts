@@ -38,6 +38,21 @@ export class ListModel {
     return new ListModel(id, name, creatorEmail, category, items);
   }
 
+  static async deleteList(id: string) {
+    try {
+      // Paso 1: Obtén una referencia al documento que deseas eliminar
+      const docRef = firestore.collection("list").doc(id);
+
+      // Paso 2: Utiliza el método delete para eliminar el documento
+      await docRef.delete();
+
+      console.log(`Lista con ID ${id} eliminada exitosamente.`);
+    } catch (error) {
+      console.error("Error al eliminar la lista:", error);
+      throw error;
+    }
+  }
+
   // Método para agregar un nuevo ítem a la lista
   addItem(itemName: string): void {
     const newItem: ListItem = {
@@ -87,8 +102,6 @@ export class ListModel {
 
   static async getListData(id: string) {
     try {
-      console.log(id);
-
       const querySnapshot = await firestore
         .collection("list")
         .doc(id) // Utiliza el ID directamente para obtener un documento específico

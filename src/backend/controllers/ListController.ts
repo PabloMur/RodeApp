@@ -72,4 +72,20 @@ export async function getListData(id: string) {
   }
 }
 
+export async function deleteList(id: string) {
+  try {
+    const listDeleted: any = await ListModel.deleteList(id);
+    return listDeleted;
+  } catch (error) {
+    return NextResponse.json(
+      {
+        error: "Error al obtener la informacion de la lista",
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+}
+
 // Función para obtener todas las listas// Función para obtener todas las listas

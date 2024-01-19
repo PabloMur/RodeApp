@@ -19,3 +19,8 @@ export const lastListID = atom({
   key: "lastListID",
   default: "",
 });
+
+export const deleteListModal = atom({
+  key: "deleteListModal",
+  default: false,
+});
