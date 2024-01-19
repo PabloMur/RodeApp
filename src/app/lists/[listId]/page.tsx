@@ -4,6 +4,8 @@ import { useGetListData } from "@/hooks";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+//recordar que esto es una pagina, por lo que se deben migrar todos estos mecanismos a su respectiva representacion como componentes
+
 export default function ListDetailsPage() {
   const [listData, setListData] = useState<any>({});
   const listDataGetter = useGetListData();
