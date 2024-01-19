@@ -42,8 +42,13 @@ export default function ListDetailsPage() {
       <div className="p-2">
         {/* Añade un paréntesis de cierre en Object.values() */}
         {Object.values(listData?.data?.listData.items || {}).map(
-          (item: any) => (
-            <ListItem index={item.id} name={item.name} status={item.status} />
+          (item: any, index) => (
+            <ListItem
+              key={index}
+              index={item.id}
+              name={item.name}
+              status={item.status}
+            />
           )
         )}
       </div>
