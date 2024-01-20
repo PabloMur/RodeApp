@@ -76,3 +76,16 @@ export const APIGetListData = async (id: string) => {
     };
   }
 };
+
+export const APIDeleteList = async (id: string) => {
+  try {
+    const response = await axios.delete(`/api/list/${id}`);
+    return { data: response.data };
+  } catch (error) {
+    console.error("Error en la eliminacion de la lista");
+    return {
+      data: null,
+      error: "Error en la obtencion de la informacion de la lista",
+    };
+  }
+};

@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import {
+  APIDeleteList,
   APIGetListData,
   createList,
   getUserLists,
@@ -148,9 +149,13 @@ export function useGetRecentList() {
 }
 
 export function useDeleteList() {
-  const [deleteListAtom, deleteListAtomSetter] =
-    useRecoilState(deleteListModal);
-  return () => {
-    deleteListAtomSetter(!deleteListAtom);
+  const loaderSetter = useSetRecoilState(loaderAtom);
+  const listID = useRecoilValue(lastListID);
+  const goto = useGoTo();
+  return async () => {
+    loaderSetter(true);
+    await APIDeleteList(listID);
+    loaderSetter(false);
+    goto("/home");
   };
 }
