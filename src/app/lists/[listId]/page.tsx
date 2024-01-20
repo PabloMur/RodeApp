@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { deleteListModal } from "@/atoms";
 import DeleteListModal from "@/components/modals/DeleteListModal";
+import Loader from "@/components/ui/Loader";
 
 //recordar que esto es una pagina, por lo que se deben migrar todos estos mecanismos a su respectiva representacion como componentes
 
@@ -31,6 +32,7 @@ export default function ListDetailsPage() {
     <div className="p-2 relative min-h-[90vh]">
       <DeleteListModal></DeleteListModal>
       <DeleteListBtn></DeleteListBtn>
+      <Loader></Loader>
       <div className="flex flex-col justify-center items-center mb-2">
         <p className="text-orange-500">Titulo</p>
         <h2 className="text-2xl">{listData?.data?.listData.name}</h2>
