@@ -4,7 +4,6 @@ import ListItem from "@/components/ui/ListItem";
 import { useGetListData } from "@/hooks";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { deleteListModal } from "@/atoms";
 import DeleteListModal from "@/components/modals/DeleteListModal";
 import Loader from "@/components/ui/Loader";
 
@@ -18,6 +17,8 @@ export default function ListDetailsPage() {
   const getListData = async () => {
     try {
       const result = await listDataGetter(listId);
+      console.log(result);
+
       setListData(result);
     } catch (error) {
       console.error("Error al obtener datos de la lista:", error);

@@ -7,7 +7,6 @@ export async function GET(req: NextRequest, { params }: any) {
     return NextResponse.json({ listData });
   } catch (error) {
     console.error("Error en la solicitud GET:", error);
-
     // Puedes personalizar la respuesta de error según tus necesidades
     return NextResponse.json(
       {

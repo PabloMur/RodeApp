@@ -5,8 +5,10 @@ interface ListItemProps {
 }
 
 const ListItem: React.FC<ListItemProps> = ({ index, name, status }) => {
+  console.log(name);
+
   return (
-    <p key={index}>
+    <p key={index} className="text-white">
       {name} {status}
       <input type="checkbox" name="" id="" />
     </p>
