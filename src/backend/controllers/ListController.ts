@@ -7,6 +7,9 @@ export async function createList(req: NextRequest) {
   try {
     // Obtén los datos del cuerpo de la solicitud
     const { name, creatorEmail, items, category } = await req.json();
+    const formatedItems = items.map((i: any) => {
+      return { name: i, status: "incomplete" };
+    });
 
     // Crea una nueva instancia de ListModel
     const newList: any = new ListModel(
@@ -14,12 +17,11 @@ export async function createList(req: NextRequest) {
       name,
       creatorEmail,
       category,
-      items
+      formatedItems
     );
 
     // Guarda la nueva lista en la base de datos
     const createdList: any = await newList.saveToListFirestore();
-    console.log(createdList);
 
     // Devuelve una respuesta con la lista recién creada
     return createdList;

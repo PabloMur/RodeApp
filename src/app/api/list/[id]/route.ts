@@ -17,6 +17,21 @@ export async function GET(req: NextRequest, { params }: any) {
   }
 }
 
+//endpoint en desarrollo
+export async function PUT(req: NextRequest) {
+  try {
+    const arr = await req.json();
+    console.log(typeof arr);
+
+    return NextResponse.json({
+      e: arr,
+    });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: "Error al actualizar la lista" });
+  }
+}
+
 export async function DELETE(req: NextRequest, { params }: any) {
   try {
     await deleteList(params.id);

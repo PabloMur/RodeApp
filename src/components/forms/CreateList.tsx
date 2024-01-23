@@ -13,6 +13,7 @@ export default function ListForm() {
   const listCreator = useCreateList();
 
   const handleAddItem = () => {
+    console.log(itemList);
     if (items.trim() !== "") {
       setItemList([...itemList, items.trim()]);
       setItems("");

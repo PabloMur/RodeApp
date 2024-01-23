@@ -14,7 +14,6 @@ export default function Navbar() {
         <MenuLiBtn route={"/my-lists"} content={"Mis Listas"}></MenuLiBtn>
         <MenuLiBtn route={"/profile"} content={"Perfil"}></MenuLiBtn>
         <MenuLiBtn route={"/navigation"} content={"Navegar"}></MenuLiBtn>
-        <MenuLiBtn route={"/weather"} content={"Clima"}></MenuLiBtn>
         <SignoutBtn></SignoutBtn>
       </ManuDesplegable>
     </nav>
