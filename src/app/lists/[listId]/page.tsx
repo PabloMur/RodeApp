@@ -17,8 +17,6 @@ export default function ListDetailsPage() {
   const getListData = async () => {
     try {
       const result = await listDataGetter(listId);
-      console.log(result);
-
       setListData(result);
     } catch (error) {
       console.error("Error al obtener datos de la lista:", error);
