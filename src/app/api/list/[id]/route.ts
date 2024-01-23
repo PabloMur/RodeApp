@@ -7,7 +7,6 @@ export async function GET(req: NextRequest, { params }: any) {
     return NextResponse.json({ listData });
   } catch (error) {
     console.error("Error en la solicitud GET:", error);
-
     // Puedes personalizar la respuesta de error según tus necesidades
     return NextResponse.json(
       {
@@ -15,6 +14,21 @@ export async function GET(req: NextRequest, { params }: any) {
       },
       { status: 500 }
     );
+  }
+}
+
+//endpoint en desarrollo
+export async function PUT(req: NextRequest) {
+  try {
+    const arr = await req.json();
+    console.log(typeof arr);
+
+    return NextResponse.json({
+      e: arr,
+    });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: "Error al actualizar la lista" });
   }
 }
 

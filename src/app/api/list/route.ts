@@ -13,6 +13,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
+//trae las listas creadas por el usuario
 export async function GET(req: NextRequest) {
   try {
     const lists = await getUserLists(req);

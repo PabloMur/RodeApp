@@ -4,7 +4,6 @@ import ListItem from "@/components/ui/ListItem";
 import { useGetListData } from "@/hooks";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { deleteListModal } from "@/atoms";
 import DeleteListModal from "@/components/modals/DeleteListModal";
 import Loader from "@/components/ui/Loader";
 
