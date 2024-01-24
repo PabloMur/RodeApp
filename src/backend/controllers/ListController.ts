@@ -80,6 +80,7 @@ export async function updateListItems(req: NextRequest, id: string) {
   try {
     const arr = await req.json();
     const updateList = await ListModel.updateItems(arr, id);
+    return updateList;
   } catch (error) {
     console.error(error);
     return error;

@@ -148,6 +148,7 @@ export class ListModel {
       console.log(
         `Estados actualizados exitosamente para la lista con ID ${id}.`
       );
+      return true;
     } catch (error) {
       console.error("Error al actualizar los estados de los items:", error);
       throw error;
