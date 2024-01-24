@@ -133,8 +133,11 @@ export function useMiniList() {
 }
 
 export function useGetListData() {
+  const loaderSetter = useSetRecoilState(loaderAtom);
   return async (listID: string) => {
+    loaderSetter(true);
     const listData = await APIGetListData(listID);
+    loaderSetter(false);
     return listData;
   };
 }

@@ -58,6 +58,7 @@ export async function getUserLists(req: NextRequest) {
   }
 }
 
+//obtener la informacion de una lista en particular
 export async function getListData(id: string) {
   try {
     const listData: any = await ListModel.getListData(id);
@@ -74,6 +75,15 @@ export async function getListData(id: string) {
   }
 }
 
+//funcion a completar la idea es que en el request viajen los indices de los items a los que hay que cambiarle el status
+export async function updateListItems(req: NextRequest, id: string) {
+  try {
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+}
+//para eliminar una lista
 export async function deleteList(id: string) {
   try {
     const listDeleted: any = await ListModel.deleteList(id);
@@ -89,5 +99,3 @@ export async function deleteList(id: string) {
     );
   }
 }
-
-// Función para obtener todas las listas// Función para obtener todas las listas

@@ -21,8 +21,6 @@ export async function GET(req: NextRequest, { params }: any) {
 export async function PUT(req: NextRequest) {
   try {
     const arr = await req.json();
-    console.log(typeof arr);
-
     return NextResponse.json({
       e: arr,
     });

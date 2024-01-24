@@ -14,6 +14,11 @@ export default function ListDetailsPage() {
   const listDataGetter = useGetListData();
   const { listId }: any = useParams();
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log(listData.data.listData.items);
+  };
+
   const getListData = async () => {
     try {
       const result = await listDataGetter(listId);
@@ -41,17 +46,21 @@ export default function ListDetailsPage() {
         <h3 className="text-xl">{listData?.data?.listData.category}</h3>
       </div>
       <div className="p-2">
-        {/* Añade un paréntesis de cierre en Object.values() */}
-        {Object.values(listData?.data?.listData.items || {}).map(
-          (item: any, index) => (
-            <ListItem
-              key={index}
-              index={index}
-              name={item.name}
-              status={item.status}
-            />
-          )
-        )}
+        <form onSubmit={handleSubmit}>
+          {Object.values(listData?.data?.listData.items || {}).map(
+            (item: any, index) => (
+              <ListItem
+                key={index}
+                index={index}
+                name={item.name}
+                status={item.status}
+              />
+            )
+          )}
+          <button className="w-full text-orange-500 text-xl font-bold border-2 rounded-xl border-orange-500 p-3">
+            Actualizar
+          </button>
+        </form>
       </div>
     </div>
   );
