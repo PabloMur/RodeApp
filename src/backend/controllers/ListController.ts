@@ -78,6 +78,8 @@ export async function getListData(id: string) {
 //funcion a completar la idea es que en el request viajen los indices de los items a los que hay que cambiarle el status
 export async function updateListItems(req: NextRequest, id: string) {
   try {
+    const arr = await req.json();
+    const updateList = await ListModel.updateItems(arr, id);
   } catch (error) {
     console.error(error);
     return error;

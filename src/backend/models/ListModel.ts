@@ -121,6 +121,39 @@ export class ListModel {
     }
   }
 
+  static async updateItems(indexArray: number[], id: string) {
+    try {
+      const docRef = firestore.collection("list").doc(id);
+
+      // Obtén el documento actual
+      const doc = await docRef.get();
+
+      if (!doc.exists) {
+        console.error(`La lista con ID ${id} no existe.`);
+        return;
+      }
+
+      const currentItems = doc.data()?.items || [];
+
+      // Actualiza los estados de los elementos según los índices proporcionados
+      indexArray.forEach((index) => {
+        if (index >= 0 && index < currentItems.length) {
+          currentItems[index].status = "complete";
+        }
+      });
+
+      // Actualiza el documento en Firestore con los nuevos items
+      await docRef.update({ items: currentItems });
+
+      console.log(
+        `Estados actualizados exitosamente para la lista con ID ${id}.`
+      );
+    } catch (error) {
+      console.error("Error al actualizar los estados de los items:", error);
+      throw error;
+    }
+  }
+
   // Método para almacenar la lista en Firestore
   async saveToListFirestore(): Promise<any> {
     try {

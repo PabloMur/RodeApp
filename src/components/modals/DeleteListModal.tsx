@@ -19,7 +19,7 @@ export default function DeleteListModal() {
         className="absolute top-0 left-0 right-0 bottom-0 h-full w-full  backdrop-blur-xl flex justify-center items-center p-4"
         onClick={handleCloseModal}
       >
-        <div className="p-4 rounded-2xl border-2 border-orange-500">
+        <div className="p-4 rounded-2xl border-2 border-orange-500 bg-black">
           <h3 className="m-4 text-xl text-orange-500">
             Estas seguro de eliminar esta lista?
           </h3>
