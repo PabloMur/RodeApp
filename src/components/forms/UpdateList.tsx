@@ -1,30 +1,34 @@
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import ListItem from "../ui/ListItem";
+import { useGetListData, useGetUpdateListItems } from "@/hooks";
 
 export default function UpdateListForm() {
-  const items = ["a", "b", "c"];
+  const getListItems = useGetListData();
+  const [items, setItems] = useState([{ name: "a", status: "incomplete" }]);
+  const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
+  const updateList = useGetUpdateListItems();
 
-  // Inicializa el estado con un objeto donde cada índice está mapeado a un valor booleano
-  const initialItemsState: Record<string, boolean> = {};
-  items.forEach((item, index) => {
-    initialItemsState[index.toString()] = false;
-  });
-
-  const [checkedItems, setCheckedItems] = useState(initialItemsState);
+  useEffect(() => {
+    const getItems = async () => {
+      const itemList = await getListItems();
+      setItems(itemList.data.listData.items);
+    };
+    getItems();
+  }, []);
 
   const handleCheckboxChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     index: number
   ): void => {
     const { checked } = event.target;
-
     setCheckedItems((prevCheckedItems) => ({
       ...prevCheckedItems,
       [index.toString()]: checked,
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("Checkboxes seleccionados:", checkedItems);
 
@@ -34,6 +38,7 @@ export default function UpdateListForm() {
       .map(Number);
 
     console.log("Índices de los items seleccionados:", selectedItems);
+    await updateList(selectedItems);
     // Realiza la lógica para actualizar la lista con los valores de checkedItems
   };
 
@@ -42,21 +47,18 @@ export default function UpdateListForm() {
       <form onSubmit={handleSubmit}>
         {items.map((item, index) => (
           <div key={index}>
-            <input
-              type="checkbox"
-              id={index.toString()}
+            <ListItem
+              index={index.toString()}
+              name={item.name}
+              status={item.status}
               checked={checkedItems[index.toString()]}
-              onChange={(e) => handleCheckboxChange(e, index)}
+              onChange={(e: any) => handleCheckboxChange(e, index)}
             />
-            <label
-              htmlFor={index.toString()}
-            >{`Opción ${item.toUpperCase()}`}</label>
-            {checkedItems[index.toString()] && (
-              <ListItem index={index} name={item} status="incomplete" />
-            )}
           </div>
         ))}
-        <button type="submit">Actualizar lista</button>
+        <button className="w-full text-orange-500 text-xl font-bold border-2 rounded-xl border-orange-500 p-3">
+          Actualizar
+        </button>
       </form>
     </div>
   );

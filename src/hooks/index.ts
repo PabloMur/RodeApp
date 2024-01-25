@@ -1,4 +1,4 @@
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { deleteListModal, lastListID, loaderAtom, menuAtom } from "@/atoms";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -133,11 +133,14 @@ export function useMiniList() {
   };
 }
 
+//this hooks give us the data of a list in particular
 export function useGetListData() {
   const loaderSetter = useSetRecoilState(loaderAtom);
-  return async (listID: string) => {
+  const params: any = useParams();
+
+  return async () => {
     loaderSetter(true);
-    const listData = await APIGetListData(listID);
+    const listData = await APIGetListData(params.listId);
     loaderSetter(false);
     return listData;
   };
@@ -152,12 +155,14 @@ export function useGetRecentList() {
 }
 
 export function useGetUpdateListItems() {
-  const listID = useRecoilValue(lastListID);
+  const params: any = useParams();
   const loaderSetter = useSetRecoilState(loaderAtom);
+
   return async (itemsArr: any) => {
     loaderSetter(true);
-    const updateList = await APIUpdateListItems(listID, itemsArr);
-    loaderSetter(true);
+    const updateList = await APIUpdateListItems(params.listId, itemsArr);
+    loaderSetter(false);
+    window.location.reload();
     return updateList;
   };
 }

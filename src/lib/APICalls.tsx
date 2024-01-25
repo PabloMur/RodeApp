@@ -79,7 +79,9 @@ export const APIGetListData = async (id: string) => {
 
 export const APIUpdateListItems = async (id: string, itemsArr: any) => {
   try {
-    const response = await axios.put(`api/list/${id}`, {
+    console.log(id + " soy el id de la lista");
+
+    const response = await axios.put(`/api/list/${id}`, {
       itemsArr,
     });
     return response.data;

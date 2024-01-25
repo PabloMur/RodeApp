@@ -4,9 +4,17 @@ interface ListItemProps {
   index: any;
   name: string;
   status: string;
+  onChange: any;
+  checked: any;
 }
 
-const ListItem: React.FC<ListItemProps> = ({ index, name, status }) => {
+const ListItem: React.FC<ListItemProps> = ({
+  index,
+  name,
+  status,
+  onChange,
+  checked,
+}) => {
   return (
     <div
       key={index}
@@ -16,7 +24,12 @@ const ListItem: React.FC<ListItemProps> = ({ index, name, status }) => {
       <div className="flex justify-between items-center gap-2 w-40">
         <Dot status={status}></Dot>
         {status}
-        <input type="checkbox" name="" id="" />
+        <input
+          type="checkbox"
+          name={name}
+          onChange={onChange}
+          checked={checked}
+        />
       </div>
     </div>
   );
