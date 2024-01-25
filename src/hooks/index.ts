@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import {
   APIDeleteList,
   APIGetListData,
+  APIUpdateListItems,
   createList,
   getUserLists,
   getWeather,
@@ -146,8 +147,18 @@ export function useGetRecentList() {
   const listID = useRecoilValue(lastListID);
   return async () => {
     const listData = await APIGetListData(listID);
-    console.log(listData);
     return listData;
+  };
+}
+
+export function useGetUpdateListItems() {
+  const listID = useRecoilValue(lastListID);
+  const loaderSetter = useSetRecoilState(loaderAtom);
+  return async (itemsArr: any) => {
+    loaderSetter(true);
+    const updateList = await APIUpdateListItems(listID, itemsArr);
+    loaderSetter(true);
+    return updateList;
   };
 }
 

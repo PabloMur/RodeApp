@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import DeleteListModal from "@/components/modals/DeleteListModal";
 import Loader from "@/components/ui/Loader";
+import UpdateListForm from "@/components/forms/UpdateList";
 
 //recordar que esto es una pagina, por lo que se deben migrar todos estos mecanismos a su respectiva representacion como componentes
 
@@ -62,6 +63,7 @@ export default function ListDetailsPage() {
           </button>
         </form>
       </div>
+      <UpdateListForm></UpdateListForm>
     </div>
   );
 }
