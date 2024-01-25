@@ -1,23 +1,37 @@
+import Dot from "./Dot";
+
 interface ListItemProps {
   index: any;
   name: string;
   status: string;
+  onChange: any;
+  checked: any;
 }
 
-const ListItem: React.FC<ListItemProps> = ({ index, name, status }) => {
-  console.log(name);
-
+const ListItem: React.FC<ListItemProps> = ({
+  index,
+  name,
+  status,
+  onChange,
+  checked,
+}) => {
   return (
-    <p
+    <div
       key={index}
-      className="text-black text-xl w-full bg-orange-500 p-4 flex justify-between items-center rounded-xl mb-2"
+      className="text-orange-500 text-xl w-full border-2 border-orange-500 p-4 flex justify-between items-center rounded-xl mb-2"
     >
-      {name}
-      <div className="flex justify-center items-center gap-2">
+      <h3>{name}</h3>
+      <div className="flex justify-between items-center gap-2 w-40">
+        <Dot status={status}></Dot>
         {status}
-        <input type="checkbox" name="" id="" />
+        <input
+          type="checkbox"
+          name={name}
+          onChange={onChange}
+          checked={checked}
+        />
       </div>
-    </p>
+    </div>
   );
 };
 

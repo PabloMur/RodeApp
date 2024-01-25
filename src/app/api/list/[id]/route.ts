@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { deleteList, getListData } from "@/backend/controllers/ListController";
+import {
+  deleteList,
+  getListData,
+  updateListItems,
+} from "@/backend/controllers/ListController";
 
 export async function GET(req: NextRequest, { params }: any) {
   try {
@@ -18,13 +22,11 @@ export async function GET(req: NextRequest, { params }: any) {
 }
 
 //endpoint en desarrollo
-export async function PUT(req: NextRequest) {
+export async function PUT(req: NextRequest, { params }: any) {
   try {
-    const arr = await req.json();
-    console.log(typeof arr);
-
+    const updatedList = await updateListItems(req, params.id);
     return NextResponse.json({
-      e: arr,
+      updatedList,
     });
   } catch (error) {
     console.error(error);

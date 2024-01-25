@@ -77,6 +77,20 @@ export const APIGetListData = async (id: string) => {
   }
 };
 
+export const APIUpdateListItems = async (id: string, itemsArr: any) => {
+  try {
+    console.log(id + " soy el id de la lista");
+
+    const response = await axios.put(`/api/list/${id}`, {
+      itemsArr,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};
+
 export const APIDeleteList = async (id: string) => {
   try {
     const response = await axios.delete(`/api/list/${id}`);
