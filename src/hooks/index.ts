@@ -48,6 +48,30 @@ export function useGeolocation(): GeolocationHook {
   return { weatherData, error };
 }
 
+export async function useGeolocationCords() {
+  const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const successCallback = (position: GeolocationPosition) => {
+      const { latitude, longitude } = position.coords;
+      setLocation({ latitude, longitude });
+    };
+
+    const errorCallback = (error: GeolocationPositionError) => {
+      setError(error.message);
+    };
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    } else {
+      setError("Geolocalización no está soportada en este navegador");
+    }
+  }, []);
+
+  return { latitude: location.latitude, longitude: location.longitude, error };
+}
+
 export function useGoTo() {
   const router = useRouter();
   return (route: string) => {
