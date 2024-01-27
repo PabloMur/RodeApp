@@ -13,7 +13,9 @@ export default function MainPanel() {
         <NavigateCard></NavigateCard>
         <CreateListCard></CreateListCard>
       </div>
-      <RecentList></RecentList>
     </div>
   );
 }
+
+//Componente a reparar
+//<RecentList></RecentList>
